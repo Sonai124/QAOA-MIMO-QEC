@@ -1,0 +1,17 @@
+LICENSE
+README.md
+pyproject.toml
+src/qaoa_mimo_qec/__init__.py
+src/qaoa_mimo_qec/cli.py
+src/qaoa_mimo_qec/experiments.py
+src/qaoa_mimo_qec/mimo.py
+src/qaoa_mimo_qec/qec.py
+src/qaoa_mimo_qec/qubo.py
+src/qaoa_mimo_qec/solvers.py
+src/qaoa_mimo_qec.egg-info/PKG-INFO
+src/qaoa_mimo_qec.egg-info/SOURCES.txt
+src/qaoa_mimo_qec.egg-info/dependency_links.txt
+src/qaoa_mimo_qec.egg-info/entry_points.txt
+src/qaoa_mimo_qec.egg-info/requires.txt
+src/qaoa_mimo_qec.egg-info/top_level.txt
+tests/test_qec.py

@@ -1,0 +1,7 @@
+numpy>=1.24
+scipy>=1.10
+matplotlib>=3.7
+docplex>=2.25
+qiskit>=1.0
+qiskit-algorithms>=0.3
+qiskit-optimization>=0.6

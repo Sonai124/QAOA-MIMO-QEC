@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qaoa-mimo-qec"
+version = "0.1.0"
+description = "QAOA-based MIMO detection + simple QEC (repetition code) benchmarking."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "Sonai Biswas"}]
+dependencies = [
+  "numpy>=1.24",
+  "scipy>=1.10",
+  "matplotlib>=3.7",
+  "docplex>=2.25",
+  "qiskit>=1.0",
+  "qiskit-algorithms>=0.3",
+  "qiskit-optimization>=0.6",
+]
+
+[project.urls]
+Homepage = "https://github.com/<your-username>/QAOA-MIMO-QEC"
+
+[project.scripts]
+qaoa-mimo-qec-run = "qaoa_mimo_qec.cli:main"

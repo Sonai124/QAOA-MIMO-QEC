@@ -1,0 +1,72 @@
+Metadata-Version: 2.4
+Name: qaoa-mimo-qec
+Version: 0.1.0
+Summary: QAOA-based MIMO detection + simple QEC (repetition code) benchmarking.
+Author: Sonai Biswas
+License: MIT
+Project-URL: Homepage, https://github.com/<your-username>/QAOA-MIMO-QEC
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy>=1.24
+Requires-Dist: scipy>=1.10
+Requires-Dist: matplotlib>=3.7
+Requires-Dist: docplex>=2.25
+Requires-Dist: qiskit>=1.0
+Requires-Dist: qiskit-algorithms>=0.3
+Requires-Dist: qiskit-optimization>=0.6
+Dynamic: license-file
+
+# QAOA-MIMO-QEC
+
+This repo combines two themes in a single, reproducible benchmark:
+
+1. **QAOA-based MIMO detection** (binary / BPSK-style) formulated as a **QUBO**.
+2. A simple **quantum error correction (QEC)** layer on top: a **repetition code** applied to the transmitted bits.
+
+The goal is to show how *decoder-style* optimization problems (MIMO ML detection, QEC decoding) share a common core:
+
+> infer a binary vector by minimizing a quadratic objective.
+
+## What you get
+
+- **Uncoded BER**: bit error rate directly after QAOA MIMO detection.
+- **Coded BER**: bit error rate after applying a repetition-code **majority vote** across repeated transmissions.
+
+## Quickstart
+
+```bash
+pip install -e .
+qaoa-mimo-qec-run --snr-db 0 2 4 6 8 10 --experiments 200 --maxiter 40 --reps 1 --nrep 3
+```
+
+Outputs JSON lines per SNR:
+
+```text
+{"snr_db": 6.0, "ber_uncoded": 0.08, "ber_rep_majority": 0.03, "avg_solve_time_s": 0.9}
+```
+
+## Model
+
+We use a real-valued linear MIMO channel:
+
+\[ y = H x + n \]
+
+- `x` is binary (0/1) by default to match the original prototype.
+- `n` is Gaussian noise.
+
+The ML objective expands to a QUBO:
+
+\[ \|y - Hx\|^2 = x^T (H^T H) x - 2 (H^T y)^T x + \text{const} \]
+
+## QEC layer
+
+We apply an \(n_\text{rep}\)-repetition code on each transmitted bit by repeating it across time slots. After detecting each slot, we take **majority vote** to recover the original bit.
+
+This is not a full surface-code style QEC (no stabilizer measurements), but it is a clean and fast way to demonstrate:
+
+- coding improves BER
+- decoding is an optimization problem (here: MIMO detection, and optionally the QEC decoding can be framed similarly)
+
+## License
+MIT

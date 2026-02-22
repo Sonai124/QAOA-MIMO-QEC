@@ -1,0 +1,2 @@
+[console_scripts]
+qaoa-mimo-qec-run = qaoa_mimo_qec.cli:main
