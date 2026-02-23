@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 cmd = [
     "qaoa-mimo-qec-run",
     "--snr-db", "0", "2", "4", "6", "8", "10",
-    "--experiments", "30",
+    "--experiments", "100",
     "--maxiter", "40",
     "--reps", "1",
     "--nrep", "3",
