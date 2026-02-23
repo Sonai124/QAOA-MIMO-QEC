@@ -26,7 +26,7 @@ def main() -> None:
 
     args = parser.parse_args()
 
-    # Default H from the original prototype (3x3)
+    # 3x3 MIMO system
     H = np.array(
         [
             [1.24155, -0.174105, 0.332349],
